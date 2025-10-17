@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio Website</title>
+<link rel="icon" type="image/png" href="images/istockphoto-1278558119-612x612.jpg">
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #040405;
+    margin: 0;
+    padding: 0;
+  }
+  nav {
+    background-color: #222831;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 20px;
+  }
+  nav a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  /* Search container */
+  .search-container {
+    position: relative;
+    margin-left: auto;
+  }
+
+  /* Search input style */
+  .search-input {
+    width: 0;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid #8a2be2; /* purple border */
+    outline: none;
+    transition: width 0.4s ease, padding 0.4s ease;
+    background: transparent;
+    color: #eeeeee;
+    opacity: 0;
+  }
+
+  /* Show search input when active */
+  .search-container.active .search-input {
+    width: 220px;
+    padding: 8px 20px;
+    opacity: 1;
+  }
+
+  /* Search icon style */
+  .search-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    stroke: #8a2be2; /* purple stroke */
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+  .search-icon:hover {
+    stroke: #5d17aa; /* darker purple on hover */
+  }
+.card-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* Center the row */
+  margin: 20px 0;
+}
+
+.image-card {
+  border: 2px solid #ccc; /* Default border */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 300px; /* Fixed width */
+}
+
+.image-card img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.image-card:hover {
+  border-color: #8a2be2; /* Purple border */
+  box-shadow: 0 0 10px 3px rgba(138, 43, 226, 0.6); /* Purple shadow */
+}
+/* footer start */
+.footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left side info */
+.footer-info {
+  flex: 1 1 300px;
+}
+
+.footer-info h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Right side form */
+.footer-form {
+  flex: 1 1 300px;
+}
+
+.footer-form h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input,
+.footer-form textarea {
+  background-color: #222;
+  border: none;
+  color: #eee;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form input:focus,
+.footer-form textarea:focus {
+  background-color: #3a1a78;
+  outline: none;
+}
+
+.footer-form button {
+  background-color: #ae7dfb;
+  color: #111;
+  padding: 12px 0;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form button:hover {
+  background-color: #d198ff;
+}
+.foot{
+  background-color: #ae7dfb;
+  height: 80px;
+  color: white;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-info,
+  .footer-form {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Go to Back</a>
+  <div class="search-container" id="searchContainer">
+    <input type="text" class="search-input" placeholder="Search..." />
+    <!-- SVG Purple Outline Search Icon -->
+    <svg class="search-icon" id="searchToggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7" stroke-width="2" />
+      <line x1="16.5" y1="16.5" x2="21" y2="21" stroke-width="2" stroke-linecap="round" />
+    </svg>
+  </div>
+</nav>
+<div class="card-row">
+  <div class="image-card">
+    <img src="images/Screenshot 2025-10-09 014851.png" alt="Image 1" />
+  </div>
+  <div class="image-card">
+    <img src="images/e25caa1260c21197b960fbe5e9f6e4f2.jpg" alt="Image 2" />
+  </div>
+  <div class="image-card">
+    <img src="images/Screenshot 2025-10-09 015139.png" alt="Image 3" />
+  </div>
+</div>
+<div class="card-row">
+  <div class="image-card">
+    <img src="images/1606996d-3d8d-421e-87e3-2a0698c82be4.jpg" alt="Image 1" />
+  </div>
+  <div class="image-card">
+    <img src="images/Screenshot 2025-10-09 015004.png" alt="Image 2" />
+  </div>
+  <div class="image-card">
+    <img src="images/Screenshot 2025-10-09 015139.png" alt="Image 3" />
+  </div>
+</div>
+<div class="card-row">
+  <div class="image-card">
+    <img src="images/foodhub-food-website-template.jpg" alt="Image 1" />
+  </div>
+  <div class="image-card">
+    <img src="images/Screenshot 2025-10-09 015202.png" alt="Image 2" />
+  </div>
+  <div class="image-card">
+    <img src="images/sakara-food-website.jpg" alt="Image 3" />
+  </div>
+</div>
+      <br>
+       <br>
+       <h1  style="font-weight: bold;padding-left: 37%;padding-top: 7%;" id="CONTACT">CONTACT </h1>
+       <!-- footer start -->
+         <footer class="footer">
+  <div class="footer-container">
+    <!-- Left side info -->
+    <div class="footer-info">
+      <h3>Contact Us</h3>
+      <p><strong>Phone:</strong> +92 3298464336</p>
+      <p><strong>Location:</strong> Arisha Society, Karachi, Pakistan</p>
+      <p><strong>Email:</strong> UmiiAbiya@gmail.com</p>
+    </div>
+
+    <!-- Right side form -->
+    <div class="footer-form">
+      <h3>Get in Touch</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</footer>
+       <!-- footer end -->
+        <div class="foot">
+<h4 style="padding-left: 40%;padding-top: 6px;">@ 2025 Dua . All rights reserved</h4>
+        </div>
+
+<script>
+  const searchContainer = document.getElementById('searchContainer');
+  const searchToggle = document.getElementById('searchToggle');
+  const searchInput = searchContainer.querySelector('.search-input');
+
+  searchToggle.addEventListener('click', () => {
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+      searchInput.focus();
+    } else {
+      searchInput.value = '';
+      searchInput.blur();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!searchContainer.contains(e.target)) {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+      searchInput.blur();
+    }
+  });
+</script>
+
+</body>
+</html>

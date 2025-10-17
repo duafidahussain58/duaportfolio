@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <link rel="icon" type="image/png" href="images/istockphoto-1278558119-612x612.jpg">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+
+
+ /* Small image thumbnail */
+    .thumbnail {
+      width: 200px;
+      cursor: pointer;
+    }
+
+    /* Fullscreen image modal background */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Large image */
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #111;
+  padding: 15px 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 999; /* keeps navbar on top of everything */
+}
+
+.navbar {
+  position: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #111;
+  border-bottom: 1px solid #383738;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-circle {
+  background: linear-gradient(to right, #a421d8, #d471f1);
+  color: #000;
+  border-radius: 50%;
+  width: 35px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.logo-text {
+  color: #b13edf;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #fff;
+  border-bottom: 2px solid rgb(201, 63, 243);
+}
+
+.icon-buttons {
+  display: flex;
+  gap: 20px;
+  color: #d799ff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.icon-buttons i {
+  transition: color 0.3s, transform 0.3s;
+}
+
+.icon-buttons i:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+@media (max-width: 650px) {
+  .icon-buttons {
+    font-size: 1.2rem;
+    gap: 15px;
+  }
+}
+
+
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #f3aaff;
+}
+
+.bold {
+  font-weight: bold;
+  color: #faf9f6;
+  font-size: 2.3rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  border-left: 3px solid #f3aaff;
+  padding-left: 10px;
+}
+
+.btn {
+  padding: 12px 25px;
+  background-color: #c24dda;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  height: 50px;width: 250px;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  background-color: transparent;
+  border: 2px solid #c24dda;
+  color: white;
+}
+
+.hero-image img {
+  width: 300px;
+  border-radius: 20px;
+  border: 2px solid #f3aaff;
+  height: 400px;
+}
+.box{
+    height: 350px;width: 350px;
+    background-color: transparent;
+    border: 2px solid #c24dda; border-radius: 19px;
+}
+.hero-content h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #f3aaff;
+  width: 0;
+  animation: typing 4s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes  typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 45%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #f3aaff;
+  }
+}
+
+
+/* .hero-content {
+  max-width: 600px;
+  animation: flyIn 1s ease-out forwards;
+} */
+
+
+@media (max-width: 650px) {
+  /* Navbar */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .nav-icons {
+    margin-top: 15px;
+    font-size: 1rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content h1,
+  .hero-content .bold {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    border-left: none;
+    border-top: 3px solid #f3aaff;
+    padding-left: 0;
+    padding-top: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 45px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  /* Box */
+  .box {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+}
+
+/* portfolio */
+.portfolio-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 50px;
+  background-color: #111;
+}
+
+
+.portfolio-card {
+  background-color: #1b1b1b;
+  border: 1.5px solid #d38bff;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;height: 450px;
+  box-shadow: 0 0 10px rgba(211, 139, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(211, 139, 255, 0.5);
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+
+.card-content {
+  padding: 20px;
+  color: #fff;
+}
+
+.card-content h3 {
+  color: #d38bff;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card-content h4 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #eee;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+.button2 button{
+  background-color: #c24dda;
+  height: 60px;width: 230px;
+  border: none;margin-left: 40%;
+  font-weight: bold;
+  border-radius: 7px;
+
+}
+.button2 button:hover{
+  background-color: transparent ;
+  border: 2px solid #c24dda;
+  color: white;
+}
+@media (max-width: 650px) {
+  .portfolio-section {
+    padding: 40px 20px;
+    gap: 20px;
+  }
+
+  .portfolio-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio-card img {
+    height: 200px;
+  }
+
+  .button2 button {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+
+/* portfolio */
+/* servieces */
+.box1{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  row-gap: 18%;
+  column-gap: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.box2{
+  background-color: transparent;
+  height: 300px;width: 400px;
+  border: 2px solid #c24dda;
+  border-radius: 7px;
+  box-shadow: 3px 4px 3px 0px rgb(82, 82, 228);
+}
+.box3{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 20px;margin-left: 10px;margin-right: 10px;
+}
+.box3 img{
+  height: 80px;width: 70px;
+  border-radius: 50%;
+}
+.box4{
+margin: 15px;margin-top: 10px;
+}
+.box4 h4{
+  padding-bottom: 15px;font-size: 20px;
+}
+@media (max-width: 650px) {
+  .box1 {
+    grid-template-columns: 1fr;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    row-gap: 40px;
+    padding: 0 20px;
+  }
+
+  .box2 {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .box3 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .box3 img {
+    height: 70px;
+    width: 70px;
+    margin: 0 auto;
+  }
+
+  .box4 {
+    margin: 10px;
+  }
+
+  .box4 h4 {
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+}
+
+/* servieces */
+/* experience skills */
+.box5{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: center;
+  gap: 60px;
+
+}
+.box6 img{
+   height: 40px;width: 50px;
+   margin-bottom: 15px;margin-left: 5px;
+}
+/* circle */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 5px;
+  padding: 40px;
+  background-color: #111;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.circle-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.bg {
+  fill: none;
+  stroke: #333;
+  stroke-width: 12;
+}
+
+.progress {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 408;
+  stroke-dashoffset: calc(408 - (408 * var(--percent)) / 100);
+  transition: stroke-dashoffset 1s ease;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.center-text span {
+  font-size: 22px;
+  font-weight: bold;
+  display: block;
+}
+
+.center-text p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 4px;
+}
+
+/* circle */
+
+@media (max-width: 650px) {
+  /* box5 responsive: 4 columns → 2 columns */
+  .box5 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  /* box6 image spacing for small screen */
+  .box6 img {
+    margin-left: 0;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  /* skills-grid responsive: progress circles */
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .circle-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .progress-ring {
+    width: 120px;
+    height: 120px;
+  }
+
+  .center-text span {
+    font-size: 18px;
+  }
+
+  .center-text p {
+    font-size: 0.8rem;
+  }
+}
+
+/* experience skills */
+    .testimonial-slider {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #c06be7;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .slide h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .slide p.role {
+      color: #e0d5d5;
+      margin-bottom: 20px;
+    }
+
+    .slide p.text {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .nav button {
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+
+    .nav button:hover {
+      background: rgba(0,0,0,0.8);
+    }
+/* testimonial 2 */
+/* footer start */
+.footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left side info */
+.footer-info {
+  flex: 1 1 300px;
+}
+
+.footer-info h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Right side form */
+.footer-form {
+  flex: 1 1 300px;
+}
+
+.footer-form h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input,
+.footer-form textarea {
+  background-color: #222;
+  border: none;
+  color: #eee;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form input:focus,
+.footer-form textarea:focus {
+  background-color: #3a1a78;
+  outline: none;
+}
+
+.footer-form button {
+  background-color: #ae7dfb;
+  color: #111;
+  padding: 12px 0;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form button:hover {
+  background-color: #d198ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-info,
+  .footer-form {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+}.footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left side info */
+.footer-info {
+  flex: 1 1 300px;
+}
+
+.footer-info h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Right side form */
+.footer-form {
+  flex: 1 1 300px;
+}
+
+.footer-form h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input,
+.footer-form textarea {
+  background-color: #222;
+  border: none;
+  color: #eee;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form input:focus,
+.footer-form textarea:focus {
+  background-color: #3a1a78;
+  outline: none;
+}
+
+.footer-form button {
+  background-color: #ae7dfb;
+  color: #111;
+  padding: 12px 0;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form button:hover {
+  background-color: #d198ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-info,
+  .footer-form {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+}.footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left side info */
+.footer-info {
+  flex: 1 1 300px;
+}
+
+.footer-info h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Right side form */
+.footer-form {
+  flex: 1 1 300px;
+}
+
+.footer-form h3 {
+  color: #e17dfb;
+  margin-bottom: 20px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input,
+.footer-form textarea {
+  background-color: #222;
+  border: none;
+  color: #eee;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form input:focus,
+.footer-form textarea:focus {
+  background-color: #3a1a78;
+  outline: none;
+}
+
+.footer-form button {
+  background-color: #ae7dfb;
+  color: #111;
+  padding: 12px 0;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-form button:hover {
+  background-color: #d198ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-info,
+  .footer-form {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+}
+/* footer end */
+.foot{
+  background-color: #b959df;
+  height: 65px;
+}
+
+
+  </style>
+</head>
+<body>
+    <!-- home page start -->
+  <header class="navbar">
+    <div class="logo"> 
+      <span class="logo-circle">D</span> <span class="logo-text">DUA</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#HOME">HOME</a></li>
+        <li><a href="#ABOUT">ABOUT</a></li>
+        <li><a href="#SERVICE">SERVICE</a></li>
+        <li><a href="#PORTFOLI ">PORTFOLIO</a></li>
+        <li><a href="#SKILLS ">SKILLS</a></li>
+        <li><a href="#TESTIMONIAL ">TESTIMONIAL</a></li>
+        <li><a href="#CONTACT ">CONTACT</a></li>
+      </ul>
+    </nav>
+</header>
+<!-- hero section start -->
+ <br>
+ <br>
+
+<div class="hero-section" id="HOME">
+  <div class="hero-content">
+    <h1>Hi, I'm Dua</h1>
+    <div class="hightlight">
+      <div class="bold"></div>
+    </div>
+<p>I'm a UI/UX Designer & Web Developer passionate about crafting beautiful, user-friendly digital experiences.
+   I blend design and code to create responsive, engaging websites that users love.</p>
+<div class="btn">GETTING STARTED  ➔</div>
+  </div>
+<div class="hero-image">
+  <div class="box">
+  <img src="images/WhatsApp Image 2025-10-13 at 10.04.57 AM (1).jpeg" alt="">
+  </div>
+</div>
+</div>
+<!-- hero section end -->
+ <!-- About page start -->
+
+      <h1 style="font-weight: bold;padding-left: 45%;padding-top: 7%;" id="ABOUT">ABOUT ME</h1>
+  <div class="hero-section">
+    <div class="hero-image">
+  <div class="box">
+  <img src="images/WhatsApp Image 2025-10-13 at 10.02.14 AM.jpeg" alt="">
+  </div>
+</div>
+  <div class="hero-content">
+    <h1>I'm Dua </h1>
+    <div class="hightlight">
+      <div class="bold"></div>
+    </div>
+    <h4>A passionate Web Developer, UI/UX Designer, and Graphic Designer with a BSc degree</h4>
+    <br>
+<p>I specialize in designing modern, user-friendly interfaces and building clean, responsive websites that work smoothly across all devices. My background in both development and 
+  design helps me bring creative ideas to life with both functionality and aesthetics in mind.</p>
+<div class="btn">DOWNLODE CV ➔</div>
+  </div>
+
+</div>
+ <!-- About page start -->
+<!-- portfolio section -->
+   <h1 style="font-weight: bold;padding-left: 45%;padding-top: 7%;" id="PORTFOLIO">PORTFOLIO</h1>
+
+ <div class="portfolio-section">
+  <div class="portfolio-card">
+    <img src="images/Screenshot 2025-10-09 014851.png" alt="Thumbnail" class="thumbnail" onclick="showImage(this.src)">
+
+    <!-- <img src="images/Screenshot 2025-10-09 014851.png" alt=""> -->
+      <div class="card-content">
+    <h3>Musk Al Mahal</h3>
+    <h4 style="color: #ac5feb;">Discover the essence of elegance.</h4>
+    <p> Our perfumes are crafted to awaken your senses with timeless Arabian luxury a perfect blend of tradition and modern sophistication.</p>
+  </div>
+  </div>
+  <div class="portfolio-card">
+          <img src="images/Screenshot 2025-10-09 015004.png" alt="Thumbnail" class="thumbnail" onclick="showImage(this.src)">
+
+       <!-- <img src="images/Screenshot 2025-10-09 015004.png" alt=""> -->
+       </a>
+      <div class="card-content">
+    <h3>Petty Care</h3>
+    <h4 style="color: #ac5feb;">Grooming with Gentle Touch</h4>
+    <p>Petty Care is a user-friendly and visually engaging website designed for 
+      a pet care brand focused on dog grooming, health, and wellness.</p>
+  </div>
+  </div>
+  <div class="portfolio-card">
+              <img src="images/Screenshot 2025-10-09 015139.png" alt="Thumbnail" class="thumbnail" onclick="showImage(this.src)">
+
+    <!-- <img src="images/Screenshot 2025-10-09 015139.png" alt=""> -->
+      <div class="card-content">
+    <h3>Pureplate Food</h3>
+    <h4 style="color: #ac5feb;">Healthy Eating Made Easy</h4>
+    <p>A clean and modern website for a healthy food brand. I designed a responsive layout that showcases 
+      fresh meals and supports easy navigation for health-focused users.</p>
+  </div>
+  </div>
+ </div>
+ <div class="button2">
+  <a href="class1.html">
+  <button> View all</button>
+  </a>
+ </div>
+<!-- portfolio section -->
+<!-- services start -->
+  <h1 style="font-weight: bold;padding-left: 45%;padding-top: 7%;" id="SERVICES">SERVICES</h1>
+
+<div class="box1">
+  <div class="box2">
+    <div class="box3">
+      <img src="images/images (1).png" alt="">
+      <h2>UI & UX Desgin</h2>
+    </div>
+    <div class="box4">
+          <h4>UI/UX Designer Crafting Thoughtful & Intuitive Digital Experiences</h4>
+    <p>I design user interfaces that are not just beautiful, but purposeful. and empathy, I turn complex problems into clean,</p>
+    </div>
+
+  </div>
+  <div class="box2">
+    <div class="box3">
+      <img src="images/web-design-logo-vector-templet_1070930-291.jpg" alt="">
+      <h2>Web Desgin & Development</h2>
+    </div>
+     <div class="box4">
+          <h4>Web Designer & Developer – Building Beautiful, Functional, and Responsive Websites</h4>
+    <p>I bring ideas to life on the web by combining creative design with clean, and responsiveness,
+      .</p>
+    </div>
+  </div>
+  <div class="box2">
+    <div class="box3">
+      <img src="images/logo-web-design-is-shown-white-background_939033-77599.jpg" alt="">
+      <h2>Website Redesgin</h2>
+    </div>
+     <div class="box4">
+          <h4>Transforming Outdated Sites into Modern, User-Centered Experiences</h4>
+    <p>Your website is often the first impression — make it count. I specialize in redesigning websites to be faster, cleaner, and more aligned with your brand and business goals.</p>
+    </div>
+  </div>
+  <div class="box2">
+    <div class="box3">
+      <img src="images/Walt-Disney-Screens-2.jpg" alt="">
+      <h2>Responsive Optimization</h2>
+    </div>
+   <div class="box4">
+          <h4>Flawless Experiences on Every Screen, Every Time</h4>
+    <p>In today’s mobile-first world, your website must perform seamlessly across all devices — from large desktops to tiny smartphones. 
+      ensuring that your site ,</p>
+    </div>
+  </div>
+
+</div>
+     <!-- Services section end -->
+      <br>
+ <h1 style="font-weight: bold;padding-left: 37%;padding-top: 7%;" id="SKILLS">EXPERIENCE & SKILLS</h1>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- experience skills start -->
+       <div class="box5">
+        <div class="box6">
+          <img src="images/download (1).png" alt="">
+          <h3>HTML</h3>
+        </div>
+        <div class="box6">
+          <img src="images/css-icon.webp" alt="">
+          <h3>CSS</h3>
+        </div>
+        <div class="box6">
+          <img src="images/11448a7a96ee808a3cdbaf0df9570976.webp" alt="">
+          <h3>JAVASCRIPT</h3>
+        </div>
+        <div class="box6">
+          <img src="images/download.png" alt="">
+          <h3>BOOTSTRAP</h3>
+        </div>
+       </div>
+       <!-- circle -->
+        <div class="skills-grid">
+  <div class="circle-container">
+    <svg class="progress-ring" width="150" height="150">
+      <circle class="bg" cx="75" cy="75" r="65" />
+      <circle class="progress" cx="75" cy="75" r="65" style="--percent: 60; stroke: #f39c12;" />
+    </svg>
+    <div class="center-text">
+      <span>60%</span>
+      <p>Graphic Design</p>
+    </div>
+  </div>
+
+  <div class="circle-container">
+    <svg class="progress-ring" width="150" height="150">
+      <circle class="bg" cx="75" cy="75" r="65" />
+      <circle class="progress" cx="75" cy="75" r="65" style="--percent: 70; stroke: #c24dda;" />
+    </svg>
+    <div class="center-text">
+      <span>70%</span>
+      <p>UI & UX Design</p>
+    </div>
+  </div>
+
+  <div class="circle-container">
+    <svg class="progress-ring" width="150" height="150">
+      <circle class="bg" cx="75" cy="75" r="65" />
+      <circle class="progress" cx="75" cy="75" r="65" style="--percent: 50; stroke: #3498db;" />
+    </svg>
+    <div class="center-text">
+      <span>50%</span>
+      <p>Web Design</p>
+    </div>
+  </div>
+
+  <div class="circle-container">
+    <svg class="progress-ring" width="150" height="150">
+      <circle class="bg" cx="75" cy="75" r="65" />
+      <circle class="progress" cx="75" cy="75" r="65" style="--percent: 90; stroke: #2ecc71;" />
+    </svg>
+    <div class="center-text">
+      <span>90%</span>
+      <p>Illustration</p>
+    </div>
+  </div>
+</div>
+
+       <!-- circle -->
+      <!-- experience skills end -->
+      <br>
+      <br>
+      <br>
+
+      <!-- testimonaile start -->
+ <h1 style="font-weight: bold;padding-left: 40%;padding-top: 7%;padding-bottom: 15px;" id="TESTIMONIAL">TESTIMONIAL</h1>
+
+
+<div class="testimonial-slider">
+  <div class="slide active">
+    <img src="images/TRENDING AND UNIQUE GIRL DPZENDING AND UNIQUE GIRL….jpg" alt="Client 1">
+    <h3>Sarah </h3>
+    <p class="role">Marketing Manager</p>
+    <p class="text">"This product has completely changed the way I manage my work. The team is fantastic and support is top-notch!"</p>
+  </div>
+
+  <div class="slide">
+    <img src="images/e31cc063-b030-401e-a9be-a7c48ffaa97b.jpg" alt="Client 2">
+    <h3>Muskan</h3>
+    <p class="role">Entrepreneur</p>
+    <p class="text">"Highly recommended! The experience has been seamless from start to finish."</p>
+  </div>
+
+  <div class="slide">
+    <img src="images/e0655d0e-6573-4517-80cb-a6a3687b9d8f.jpg" alt="Client 3">
+    <h3>Amna</h3>
+    <p class="role">UX Designer</p>
+    <p class="text">"Elegant design and very easy to use. The customer service was friendly and responsive."</p>
+  </div>
+
+  <div class="nav">
+    <button onclick="prevSlide()">❮</button>
+    <button onclick="nextSlide()">❯</button>
+  </div>
+</div>
+      <!-- testimonaile end -->
+       <br>
+       <br>
+       <br>
+       <h1  style="font-weight: bold;padding-left: 37%;padding-top: 7%;" id="CONTACT">CONTACT </h1>
+       <!-- footer start -->
+         <footer class="footer">
+  <div class="footer-container">
+    <!-- Left side info -->
+    <div class="footer-info">
+      <h3>Contact Us</h3>
+      <p><strong>Phone:</strong> +92 3298464336</p>
+      <p><strong>Location:</strong> Arisha Society, Karachi, Pakistan</p>
+      <p><strong>Email:</strong> UmiiAbiya@gmail.com</p>
+    </div>
+
+    <!-- Right side form -->
+    <div class="footer-form">
+      <h3>Get in Touch</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</footer>
+       <!-- footer end -->
+        <div class="foot">
+<h4 style="padding-left: 40%;padding-top: 6px;">@ 2025 Dua . All rights reserved</h4>
+        </div>
+
+
+
+
+        
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach((slide, idx) => {
+      slide.classList.remove('active');
+      if (idx === i) slide.classList.add('active');
+    });
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  // Auto-slide every 5 seconds
+  setInterval(nextSlide, 5000);
+</script>
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal" onclick="closeModal()">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+  function showImage(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("myModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+</script>
+</body>
+</html>
